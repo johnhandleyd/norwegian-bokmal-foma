@@ -1,0 +1,264 @@
+!!!! CHANGE SINGULAR AND PLURAL TAGS TO NORWEGIAN !!!!
+
+!!! norwegian.lexc !!!
+
+! [! ! == translation] !
+! [!! !! == explanation] !
+! [!!! !!! == file] !
+
+
+!! The tags are declared in Norwegian. Here's a brief translation/explanation: !!
+! verb (verb) [stem], substantiv (noun), infinitiv (infinitive), presens (present) !
+! preteritum (preterite), presens perfektum (present perfect),
+! preteritum perfektum (preterite perfect), presens futurum (present future) !
+! preteritum futurum (preterite future), presens futurum perfektum (present future perfect) !
+! preteritum futurum perfektum (preterite future perfect) !
+! suffiks (suffix), prefiks (prefix), sterke (strong verbs), bestemt (definite), ubestemt (indefinite) !
+! VerbStamme = stem of the verbs, StammeInflN = inflection of stem + number !
+! SubsInf = inflection of nouns (Hankjønns = masculine, Hunkjønns = femenine, Intetkjønn = neuter, IntetkjønnSterke = neuter for irregular/strong nouns) !
+! Begynnelse = beginning (auxiliary verbs) !
+!! Due to a lack of blank spaces, the underscore sign will be used '_' with the auxiliary verbs that precede main verbs !!
+
+
+!! Below are declared the multicharacter symbols, among which flag diacritics can be found for unification, disallow and require. !!
+Multichar_Symbols +S +Sg +Pl +Bes +Ubes +V +Inf +Pres +Pret +PresPerf +PretPerf +PresFut +PretFut +PresFutPerf +PretFutPerf +Imp @U.Å.ON@ @U.HAR.ON@ @U.HADDE.ON@ @U.VIL.ON@ @U.VIL_HA.ON@ @U.VILLE.ON@ @U.VILLE_HA.ON@ @U.DU.ON@ @D.Å@ @D.HAR@ @D.HADDE@ @D.VIL@ @D.VIL_HA@ @D.VILLE@ @D.VILLE_HA@ @D.DU@ @U.BI.ON@ @D.BI@ @R.BI@ @U.TAKER.ON@ @R.TAKER@ @U.GJENGER.ON@ @R.GJENGER@ @U.Å.OFF@ @U.HAR.OFF@ @U.HADDE.OFF@ @U.VIL.OFF@ @U.VIL_HA.OFF@ @U.VILLE.OFF@ @U.VILLE_HA.OFF@ @U.DU.OFF@
+
+LEXICON Root
+
+Prefiks ;
+
+
+!! Below are the prefixes (preposition, auxiliary verbs and pronoun). !!
+LEXICON Prefiks
+!! Preposition 'to' for the infinitives. !!
+@U.Å.ON@å_+:@U.Å.ON@å_                                                                                VerbStamme; !! This is the preposition å ('to') used with infinitive verbs, such as in English ('to read' --> 'å lese'). !!
+
+!! Auxiliary verbs !!
+@U.HAR.ON@:@U.HAR.ON@har_                                                                            VerbStamme; !! This is the auxiliary verb har ('have') used with the present perfect. !!
+@U.HADDE.ON@:@U.HADDE.ON@hadde_                                                                       VerbStamme; !! This is the auxiliary verb hadde ('had') used with the preterite perfect. !!
+@U.VIL.ON@:@U.VIL.ON@vil_                                                                             VerbStamme; !! This is the auxiliary verb vil ('will') used with present future. !!
+@U.VIL_HA.ON@:@U.VIL_HA.ON@vil_ha_                                                                    VerbStamme; !! This is the auxiliary verb vil ha ('will have') used with the preterite future. !!
+@U.VILLE.ON@:@U.VILLE.ON@ville_                                                                       VerbStamme; !! This is the auxiliary verb ville ('would') used with the present future perfect. !!
+@U.VILLE_HA.ON@:@U.VILLE_HA.ON@ville_ha_                                                              VerbStamme; !! This is the auxiliary verb ville ha ('would have') used with the preterite future perfect. !!
+@U.DU.ON@:@U.DU.ON@du_                                                                                VerbStamme; !! This is the pronoun du ('you') used with the imperative. !!
+@U.Å.OFF@@U.HAR.OFF@@U.HADDE.OFF@@U.VIL.OFF@@U.VIL_HA.OFF@@U.VILLE.OFF@@U.VILLE_HA.OFF@@U.DU.OFF@     VerbStamme; !! This flag is for the tenses that don't require an auxiliary verb. !!
+
+!! Prefix 'bi-' for some nouns. !!
+@U.BI.ON@bi+:@U.BI.ON@bi+   Substantiv; !! This is the prefix bi-', which can be two (as in 'biprodukt') or side (as in 'biarbeide'). !!
+                            Substantiv;
+
+
+!! Below are the selected verbs which lead to their corresponding conjugation. !!
+LEXICON VerbStamme
+fall                Sterke; !! An irregular verb -> it leads to the irregular conjugation, but most tenses are declared as an exception in the foma file. This applies to the following irregular verbs. !!
+foretrekk           Sterke;
+få                  Sterke;
+gi                  Sterke;
+hjelp               Sterke;
+arbeid         StammeInfl1; !! A regular verb of the first conjugation -> it leads to the 'StammeInfl1'. This applies to the following verbs of the first conjugation. !!
+begynn         StammeInfl2; !! A regular verb of the second conjugation -> it leads to the 'StammeInfl2'. This applies to the following verbs of the second conjugation. !!
+bestem         StammeInfl2;
+kjør           StammeInfl2;
+lær            StammeInfl2;
+flytt          StammeInfl1;
+husk           StammeInfl1;
+rusl           StammeInfl1;
+slapp          StammeInfl1;
+vent           StammeInfl1;
+øsregn         StammeInfl1;
+åpn            StammeInfl1;
+ordn           StammeInfl1;
+bakt           StammeInfl2;
+betalt         StammeInfl2;
+drept          StammeInfl2;
+kjørt          StammeInfl2;
+delt           StammeInfl2;
+lest           StammeInfl2;
+ringt          StammeInfl2;
+skålt          StammeInfl2;
+smilt          StammeInfl2;
+krev           StammeInfl3; !! A regular verb of the third conjugation -> it leads to 'StammeInfl3'. This applies to the following verbs of the third conjugation. !!
+lev            StammeInfl3;
+tygg           StammeInfl3;
+vri            StammeInfl4; !! A regular verb of the fourth conjugation -> it leads to 'StammeInfl4'. This applies to the following verbs of the fourth conjugation. !!
+blø            StammeInfl4;
+betro          StammeInfl4;
+
+
+!! Below are the selected nouns which lead to their corresponding conjugation (masculine, feminine or neuter). Those that used the prefix 'bi-' declared previously don't have a flag; the rest have the disabling flag. !!
+!! Those with suffixes have the corresponding unifying flag. !!
+LEXICON Substantiv
+@D.BI@gutt                            SubsInfHankjønns; !! A masculine noun -> it leads to 'SubsInfHankjønns'. This applies to the following masculine nouns. !!
+@D.BI@jente                           SubsInfHunkjønns; !! A feminine noun -> it leads to 'SubsInfHunkjønns'. This applies to the following feminine nouns. !!
+@D.BI@kinn                           SubsInfIntetkjønn; !! A neuter noun -> it leads to 'SubsInfIntetkjønn'. This applies to the following masculine nouns. !!
+@D.BI@avis                            SubsInfHankjønns;
+@D.BI@flaske                          SubsInfHunkjønns;
+@D.BI@ansikt                         SubsInfIntetkjønn;
+@D.BI@hund                            SubsInfHankjønns;
+produkt                              SubsInfIntetkjønn; !! A neuter noun that can be preceded by the prefix '-bi'. !!
+fall                                 SubsInfIntetkjønn; !! A neuter noun that can be preceded by the prefix '-bi'. !!
+arbeid                               SubsInfIntetkjønn; !! A neuter noun that can be preceded by the prefix '-bi'. !!
+@D.BI@@U.GJENGER.ON@kirke                      Suffiks; !! A masculine noun that can be followed by the suffix '-gjenger'. It leads to the 'Suffiks' part. !!
+@D.BI@@U.GJENGER.ON@konsert                    Suffiks; !! A masculine noun that can be followed by the suffix '-gjenger'. It leads to the 'Suffiks' part. !!
+@D.BI@@U.TAKER.ON@beslutnings                  Suffiks; !! A masculine noun that can be followed by the suffix '-taker'.  It leads to the 'Suffiks' part. !!
+@D.BI@tre                      SubsInfIntetkjønnSterke; !! An irregular neuter noun -> it leads to 'SubsInfIntetkjønnSterke'. This applies to the following irregular neuter nouns. !!
+@D.BI@kne                      SubsInfIntetkjønnSterke;
+@D.BI@håndkle                  SubsInfIntetkjønnSterke;
+@D.BI@politiker                       SubsInfHankjønns;
+@D.BI@jeger                           SubsInfHankjønns;
+
+
+!! Below are the four conjugations of the verbs. Each tense leads to their respective beginning flag (whether they have or don't have an auxiliary verb or the pronoun 'du' for the imperative). !!
+!! Below is the first conjugation for the verbs. !!
+LEXICON StammeInfl1
+
++V:0                            Begynnelse;
++V+Inf:+e                      åBegynnelse;
++V+Pres:+er                     Begynnelse;
++V+Pret:+et                     Begynnelse;
++V+PresPerf:+et              harBegynnelse;
++V+PretPerf:+et            haddeBegynnelse;
++V+PresFut:+e                vilBegynnelse;
++V+PretFut:+et            vil_haBegynnelse;
++V+PresFutPerf:+e          villeBegynnelse;
++V+PretFutPerf:+et      ville_haBegynnelse;
++V+Imp:0                      duBegynnelse;
+
+
+!! Below is the second conjugation for the verbs. !!
+LEXICON StammeInfl2
+
++V:0                            Begynnelse;
++V+Inf:+e                      åBegynnelse;
++V+Pres:+er                     Begynnelse;
++V+Pret:+te                     Begynnelse;
++V+PresPerf:+t               harBegynnelse;
++V+PretPerf:+t             haddeBegynnelse;
++V+PresFut:+e                vilBegynnelse;
++V+PretFut:+t             vil_haBegynnelse;
++V+PresFutPerf:+e          villeBegynnelse;
++V+PretFutPerf:+t       ville_haBegynnelse;
++V+Imp:0                      duBegynnelse;
+
+
+!! Below is the third conjugation for the verbs. !!
+LEXICON StammeInfl3
+
++V:0                            Begynnelse;
++V+Inf:+e                      åBegynnelse;
++V+Pres:+er                     Begynnelse;
++V+Pret:+de                     Begynnelse;
++V+PresPerf:+d               harBegynnelse;
++V+PretPerf:+d             haddeBegynnelse;
++V+PresFut:+e                vilBegynnelse;
++V+PretFut:+d             vil_haBegynnelse;
++V+PresFutPerf:+e          villeBegynnelse;
++V+PretFutPerf:+d       ville_haBegynnelse;
++V+Imp:0                      duBegynnelse;
+
+
+!! Below is the fourth conjugation for the verbs. !!
+LEXICON StammeInfl4
+
++V:0                           Begynnelse;
++V+Inf:0                      åBegynnelse;
++V+Pres:+r                     Begynnelse;
++V+Pret:+dde                   Begynnelse;
++V+PresPerf:+dd             harBegynnelse;
++V+PretPerf:+dd           haddeBegynnelse;
++V+PresFut:0                vilBegynnelse;
++V+PretFut:+dd           vil_haBegynnelse;
++V+PresFutPerf:0          villeBegynnelse;
++V+PretFutPerf:+dd     ville_haBegynnelse;
++V+Imp:0                     duBegynnelse;
+
+
+!! Below is two of the irregular conjugation for the verbs. The rest are declared as exceptions in the foma file. !!
+LEXICON Sterke
+
++V+Inf:0                       Begynnelse;
++V+Imp:0                       Begynnelse;
+
+
+!! Below, the flags indicate whether a tense begins with an auxiliary verb or not. The one they begin with will have at the beginning the '@U.VALUE.ON' flag and the rest will be disabled. !!
+!! Below is the empty beginning for the verbs. For this one, all the flags are 'OFF'. !!
+LEXICON Begynnelse
+
+@U.Å.OFF@@U.HAR.OFF@@U.HADDE.OFF@@U.VIL.OFF@@U.VIL_HA.OFF@@U.VILLE.OFF@@U.VILLE_HA.OFF@@U.DU.OFF@               #;
+
+!! Below is the 'å' beginning for the infinitives. The rest of the flags are OFF. !!
+LEXICON åBegynnelse
+
+@U.Å.ON@@D.HAR@@D.HADDE@@D.VIL@@D.VIL_HA@@D.VILLE@@D.VILLE_HA@@D.DU@            #;
+
+!! Below is the 'har' beginning for the verbs. The rest of the flags are OFF. !!
+LEXICON harBegynnelse
+
+@U.HAR.ON@@D.Å@@D.HADDE@@D.VIL@@D.VIL_HA@@D.VILLE@@D.VILLE_HA@@D.DU@            #;
+
+!! Below is the 'hadde' beginning for the verbs. The rest of the flags are OFF. !!
+LEXICON haddeBegynnelse
+
+@U.HADDE.ON@@D.Å@@D.HAR@@D.VIL@@D.VIL_HA@@D.VILLE@@D.VILLE_HA@@D.DU@           #;
+
+!! Below is the 'vil' beginning for the verbs. The rest of the flags are OFF. !!
+LEXICON vilBegynnelse
+
+@U.VIL.ON@@D.Å@@D.HAR@@D.HADDE@@D.VIL_HA@@D.VILLE@@D.VILLE_HA@@D.DU@            #;
+
+!! Below is the 'vil_ha' beginning for the verbs. The rest of the flags are OFF. !!
+LEXICON vil_haBegynnelse
+
+@U.VIL_HA.ON@@D.Å@@D.HAR@@D.HADDE@@D.VIL@@D.VILLE@@D.VILLE_HA@@D.DU@            #;
+
+!! Below is the 'ville' beginning for the verbs. The rest of the flags are OFF. !!
+LEXICON villeBegynnelse
+
+@U.VILLE.ON@@D.Å@@D.HAR@@D.HADDE@@D.VIL@@D.VIL_HA@@D.VILLE_HA@@D.DU@            #;
+
+!! Below is the 'ville_ha' beginning for the verbs. The rest of the flags are OFF. !!
+LEXICON ville_haBegynnelse
+
+@U.VILLE_HA.ON@@D.Å@@D.HAR@@D.HADDE@@D.VIL@@D.VIL_HA@@D.VILLE@@D.DU@            #;
+
+!! Below is the 'du' beginning for the verbs (the pronoun 'you'). The rest of the flags are OFF. !!
+LEXICON duBegynnelse
+
+@U.DU.ON@@D.Å@@D.HAR@@D.HADDE@@D.VIL@@D.VIL_HA@@D.VILLE@@D.VILLE_HA@            #;
+
+
+!! Below is the masculine conjugation for regular nouns. !!
+LEXICON SubsInfHankjønns
++S+Sg+Ubes:0        #;
++S+Sg+Bes:+en       #;
++S+Pl+Ubes:+er      #;
++S+Pl+Bes:+ene      #;
+
+
+!! Below is the feminine conjugation for regular nouns. !!
+LEXICON SubsInfHunkjønns
++S+Sg+Ubes:0        #;
++S+Sg+Bes:+a        #;
++S+Pl+Ubes:+er      #;
++S+Pl+Bes:+ene      #;
+
+!! Below is the neuter conjugation for regular nouns. !!
+LEXICON SubsInfIntetkjønn
++S+Sg+Ubes:0        #;
++S+Sg+Bes:+et       #;
++S+Pl+Ubes:+er      #;
++S+Pl+Bes:+ene      #;
+
+!! Below is the neuter conjugation for irregular or strong nouns. !!
+LEXICON SubsInfIntetkjønnSterke
++S+Sg+Ubes:0        #;
++S+Sg+Bes:+et       #;
++S+Pl+Ubes:+ær      #;
++S+Pl+Bes:+ærne     #;
+
+!! Below is two suffixes for some of the nouns. They are masculine so they lead to the masculine conjugation. !!
+!! The bare nouns also go to the conjugation to be inflected on their own (i.e., kirke) as well as with the suffix (i.e., kirkegjenger). !!
+LEXICON Suffiks
+@R.GJENGER@+gjenger:@R.GJENGER@+gjenger           SubsInfHankjønns;
+@R.TAKER@+taker:@R.TAKER@+taker                   SubsInfHankjønns;
+                                                  SubsInfHankjønns;

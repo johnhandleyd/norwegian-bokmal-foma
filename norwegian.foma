@@ -1,0 +1,68 @@
+### norwegian.foma ###
+
+# [# # == translation] #
+# [## ## == explanation] #
+# [### ### == file] #
+
+
+## reads the lexc file and defines the Lexicon declared in said file ##
+read lexc norwegian.lexc
+define LEXICON;
+
+## This rule reduces double consonants to a single one when they are followed by the '+' sign and a t or d. It's typical for these double consonants to turn into a single one when conjugated. ##
+define ConsonantDoublingOff m m -> m || _ "+" t  ,,
+                            n n -> n || _ "+" t  ,,
+                            l l -> l || _ "+" t  ,,
+                            g g -> g || _ "+" d   ;
+
+## This rule eliminates an 'e' when it appears before an 'æ'. Some irregular/strong nouns when conjugated in plural change the double 'ee' to an 'æ'.  ##
+define eToaeTransformation  e -> 0 || _ "+" æ ;
+
+## This rule is for the conjugation of the irregular/strong masculine that end in '-er', such 'politiker' or those with the suffix '-taker'.  ##
+define IrregularNounConjugation e r "+" e r -> e "+" r e     ,,
+                                e r "+" e n e -> e r "+" n e  ;
+
+## This rule will remove the '+' sign. ##
+define CleanUp "+" -> 0;
+
+
+## re-read the lexc and re-define the Lexicon ##
+read lexc norwegian.lexc
+define LEXICON
+
+
+## This defines the grammar with the lexicon along all the rules. ##
+define Grammar  LEXICON                   .o.
+                ConsonantDoublingOff       .o.
+                eToaeTransformation       .o.
+                IrregularNounConjugation  .o.
+                CleanUp;
+
+
+## Here are defined the exceptions (verbs and nouns). However, even when using the '.P.' for priority, foma still prints the wrong output (as well as the correct one written here). ##
+## The verbs below had some conjugations that were similar to the some of the four regular conjugations, but due to this error I couldn't fix, the verbs below have been attributed a different conjugation ('Sterke', strong/irregular). ##
+## All of these verbs had the infinitive and imperative in common, thus those are the only tenses declared in 'Sterke', and the rest were written here to avoid the wrong output being printed. ##
+define Fall [[{fall} "+V" "+Pres" .x. {faller}] | [{fall} "+V" "+Pret" .x. {falt}] | [{fall} "+V" "+PresPerf" .x. {har_falt}] | [{fall} "+V" "+PretPerf" .x. {hadde_falt}] | [{fall} "+V" "+PresFut" .x. {vil_falle}] | [{fall} "+V" "+PretFut" .x. {vil_ha_falt}] | [{fall} "+V" "+PresFutPerf" .x. {ville_falle}] | [{fall} "+V" "+PretFutPerf" .x. {ville_ha_falt}]] ;
+define Foretrekk [[{foretrekk} "+V" "+Pres" .x. {foretrekker}] | [{foretrekk} "+V" "+Pret" .x. {foretrakk}] | [{foretrekk} "+V" "+PresPerf" .x. {har_foretrukket}] | [{foretrekk} "+V" "+PretPerf" .x. {hadde_foretrukket}] | [{foretrekk} "+V" "+PresFut" .x. {vil_foretrekke}] | [{foretrekk} "+V" "+PretFut" .x. {vil_ha_foretrukket}] | [{foretrekk} "+V" "+PresFutPerf" .x. {ville_foretrekke}] | [{foretrekk} "+V" "+PretFutPerf" .x. {ville_ha_foretrukket}]] ;
+define Få [[{få} "+V" "+Pres" .x. {får}] | [{få} "+V" "+Pret" .x. {fikk}] | [{få} "+V" "+PresPerf" .x. {har_fått}] | [{få} "+V" "+PretPerf" .x. {hadde_fått}] | [{få} "+V" "+PresFut" .x. {vil_få}] | [{få} "+V" "+PretFut" .x. {vil_ha_fått}] | [{få} "+V" "+PresFutPerf" .x. {ville_få}] | [{få} "+V" "+PretFutPerf" .x. {ville_ha_fått}]]  ;
+define Gi [[{gi} "+V" "+Pres" .x. {gir}] | [{gi} "+V" "+Pret" .x. {gav}] | [{gi} "+V" "+PresPerf" .x. {har_gitt}] | [{gi} "+V" "+PretPerf" .x. {hadde_gitt}] | [{gi} "+V" "+PresFut" .x. {vil_gi}] | [{gi} "+V" "+PretFut" .x. {vil_ha_gitt}] | [{gi} "+V" "+PresFutPerf" .x. {ville_gi}] | [{gi} "+V" "+PretFutPerf" .x. {ville_ha_gitt}]] ;
+define Hjelp [[{hjelp} "+V" "+Pres" .x. {hjelper}] | [{hjelp} "+V" "+Pret" .x. {hjalp}] | [{hjelp} "+V" "+PresPerf" .x. {har_hjulpet}] | [{hjelp} "+V" "+PretPerf" .x. {hadde_hjulpter}] | [{hjelp} "+V" "+PresFut" .x. {vil_hjelpe}] | [{gi} "+V" "+PretFut" .x. {vil_ha_hjulpet}] | [{hjelp} "+V" "+PresFutPerf" .x. {ville_hjelpe}] | [{hjelp} "+V" "+PretFutPerf" .x. {ville_ha_hjulpet}]] ;
+
+## For the noun exceptions below, foma outputs both this correct option and the incorrect one. I still haven't been able to figure out the problem, so this would be a bug I would like to fix further on. ##
+define SterkeSubstantive [[{bi+fall} "+S" "+Sg" "+Bes" .x. {bifall}]] ,,
+                              [[{fall} "+S" "+Sg" "+Bes" .x. {fall}]]  ;
+
+
+## This puts together the irregular verbs in 'IrregularVerbs'. ##
+define IrregularVerbs Fall | Foretrekk | Få | Gi | Hjelp ;
+
+
+## This defines the regular expression joining the grammar, the irregular verbs and nouns. ##
+regex Grammar | IrregularVerbs | SterkeSubstantive;
+
+
+## Note that the auxiliary verbs were have to be added to the main verbs when applying up. That is, you have to type 'vil_ha_' plus the conjugated verb in order to get its tense Example below. ##
+## Some of the examples we can find are: ##
+## apply up -> kirkegjenger || outputs -> kirke+gjenger+S+Sg+Ubes ##
+## apply down -> lev+V+PretFut || outputs -> vil_ha_levd ##
+## apply up -> vil_ha_levd || outputs -> lev+V+PretFut ##
